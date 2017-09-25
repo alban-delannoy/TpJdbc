@@ -1,17 +1,21 @@
 package fr.univ_amu.iut;// Ne pas faire un copier/coller du pdf...
 
 // Importer les classes jdbc
+import fr.univ_amu.iut.beans.Etudiant;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 public class TestJDBC {
 	// Chaine de connexion
-	static final String CONNECT_URL = "jdbc:mysql://localhost:3306/gestionPedaBD";
-	static final String LOGIN = "monUser";
-	static final String PASSWORD = "monPassword";
+	static final String CONNECT_URL = "jdbc:mysql://mysql-alban.alwaysdata.net:3306/alban_data_base";
+	static final String LOGIN = "alban" +
+			"";
+	static final String PASSWORD = "lemdpalban";
 	// La requete de test
 	static final String req = "SELECT NUM_ET, NOM_ET, PRENOM_ET " +
-	                          "FROM ETUDIANT " +
-	                          "WHERE VILLE_ET = 'AIX-EN-PROVENCE'";
+	                          "FROM ETUDIANT "; //+
+	                          //"WHERE VILLE_ET = 'AIX-EN-PROVENCE'";
 
 	public static void main(String[] args) throws SQLException {
 		// Connexion a la base
