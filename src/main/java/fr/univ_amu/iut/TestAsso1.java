@@ -1,6 +1,8 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.beans.Etudiant;
+import fr.univ_amu.iut.beans.Module;
+import fr.univ_amu.iut.beans.Prof;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,10 +15,9 @@ import static fr.univ_amu.iut.TestJDBC.CONNECT_URL;
 /**
  * Created by d16015154 on 25/09/17.
  */
-public class TestEntite {
-    // La requete de test
+public class TestAsso1 {
     static final String req = "SELECT * " +
-            "FROM ETUDIANT "; //+
+            "FROM PROF "; //+
     //"WHERE VILLE_ET = 'AIX-EN-PROVENCE'";
 
     public static void main(String[] args) throws SQLException {
@@ -30,20 +31,21 @@ public class TestEntite {
             System.out.println("Execution de la requete : " + req );
             ResultSet rset = stmt.executeQuery(req);
             // Affichage du resultat
-            ArrayList<Etudiant> etudiants = new ArrayList<Etudiant>();
+            ArrayList<Prof> profs = new ArrayList<Prof>();
             while (rset.next()){
-                Etudiant etudiant = new Etudiant();
-                System.out.print(rset.getInt("NUM_ET") + " ");
-                System.out.print(rset.getString("NOM_ET") + " ");
-                System.out.println(rset.getString("PRENOM_ET"));
-                etudiant.setAnnee(rset.getInt("ANNEE"));
-                etudiant.setNomEt(rset.getString("NOM_ET"));
-                etudiant.setPrenomEt(rset.getString("PRENOM_ET"));
-                etudiant.setVilleEt(rset.getString("VILLE_ET"));
-                etudiant.setGroupe(rset.getInt("GROUPE"));
-                etudiant.setCpEt(rset.getString("CP_ET"));
-                etudiants.add(etudiant);
-                System.out.println(etudiant.toString());
+                Prof prof = new Prof();
+                Module module = new Module();
+                System.out.print(rset.getInt("NUM_PROF") + " ");
+                System.out.print(rset.getString("NOM_PROF") + " ");
+                System.out.println(rset.getString("PRENOM_PROF"));
+                module.setCode(rset.getString("MAT_SPEC"));
+                prof.setNomProf(rset.getString("NOM_PROF"));
+                prof.setPrenomProf(rset.getString("PRENOM_PROF"));
+                prof.setVilleProf(rset.getString("VILLE_PROF"));
+                prof.setAdrProf(rset.getString("ADR_PROF"));
+                prof.setCpProf(rset.getString("CP_PROF"));
+                profs.add(prof);
+                System.out.println(prof.toString());
             }
             // Fermeture de l'instruction (liberation des ressources)
             stmt.close();

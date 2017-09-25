@@ -12,6 +12,7 @@ public class Prof implements Serializable {
 	private String villeProf;
 	private Module matSpec;
 
+
 	public Prof() {
 	}
 
